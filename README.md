@@ -1,21 +1,39 @@
 
 # Transwarp Case Diagnostic Tool (CDT) 使用手册
 
-**适用版本：1.0.x**
+**适用版本：1.1.x**
 
-**编写时间：2022-01-25**
+**编写时间：2022-02-24**
 
-**更新时间：2022-02-16**
+**更新时间：2022-02-24**
 
 ----
 
 ## 什么是 Transwarp Case Diagnostic Tool (CDT)
+
+### 基本介绍
 
 Transwarp Case Diagnostic Tool (CDT) 是一款适配 Transwarp Data Hub （即 TDH）集群的运维诊断辅助工具。Transwarp Case Diagnostic Tool (CDT) 旨在帮助 TDH 集群运维人员高效、简便地获取 TDH 集群后台日志和诊断信息，从而保障集群的稳定运行。
 
 不需要懂 Linux ，不需要懂 Docker ，不需要懂 K8S ，只需要输入一些集群的基本信息，再动动鼠标，后台日志和诊断信息就能即刻出现在您的眼前。
 
 无论是自行排查日志，还是将日志和诊断信息打包发送给售后支持人员，Transwarp Case Diagnostic Tool (CDT) 都能够大大提高 Troubleshooting 效率。
+
+### 版本更新记录
+
+#### 1.0.1 to 1.1.0
+
+【新功能追加】
+
+1. 内核升级到0.13；
+2. 增加更新记录查看功能；
+3. 增加服务配置获取功能；
+
+【修复与改善】
+
+1. 修复了在特定场景下，检查更新引发程序崩溃的问题；
+2. 将在线帮助文档优化为离线帮助文档，无需网络即可查阅；
+3. 其他软件稳定性和易用性优化。
 
 ----
 
@@ -668,6 +686,20 @@ Transwarp Case Diagnostic Tool (CDT) 支持获取指定服务角色的日志信�
 点击【OK】，即可打开下载目录。
 
 对于 Manager 服务，查看版本会收集 Manager 的 RPM 包版本信息；对于 TOS 服务，查看版本会收集 TOS 镜像和 Pod 描述信息；对于其他服务，查看版本会收集 Pod 描述信息。
+
+#### 快捷功能：配置信息
+
+配置信息是大部分服务都具有的快捷功能，它主要用于获取并查看服务的配置文件。
+
+![image.png](https://s2.loli.net/2022/02/24/Al9vGy8HuUz3cPf.png)
+
+点击【配置信息】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+配置信息会将服务的配置文件打包成 tar.gz 格式并下载到下载目录中。
 
 #### 快捷功能：Manager 工具箱
 
