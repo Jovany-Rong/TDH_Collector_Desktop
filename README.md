@@ -1,13 +1,89 @@
 
 # Transwarp Case Diagnostic Tool (CDT) 使用手册
 
-**适用版本：1.1.x**
+**适用版本：1.2.x**
 
-**编写时间：2022-02-24**
+**编写时间：2022-03-04**
 
-**更新时间：2022-02-24**
+**更新时间：2022-03-04**
 
 ----
+
+**目录**
+
+<!-- TOC -->
+
+- [Transwarp Case Diagnostic Tool (CDT) 使用手册](#transwarp-case-diagnostic-tool-cdt-使用手册)
+  - [什么是 Transwarp Case Diagnostic Tool (CDT)](#什么是-transwarp-case-diagnostic-tool-cdt)
+    - [基本介绍](#基本介绍)
+    - [版本更新记录](#版本更新记录)
+      - [1.1.0 to 1.2.0](#110-to-120)
+      - [1.0.1 to 1.1.0](#101-to-110)
+  - [环境要求](#环境要求)
+    - [本机操作系统](#本机操作系统)
+      - [Windows](#windows)
+      - [MacOS](#macos)
+      - [其他 OS](#其他-os)
+    - [集群兼容性](#集群兼容性)
+      - [版本兼容性](#版本兼容性)
+      - [操作系统兼容性](#操作系统兼容性)
+    - [网络要求](#网络要求)
+      - [本机与集群间网络要求](#本机与集群间网络要求)
+      - [互联网网络要求](#互联网网络要求)
+    - [权限要求](#权限要求)
+      - [节点登录用户](#节点登录用户)
+      - [Manager 用户](#manager-用户)
+  - [安装及更新 Transwarp Case Diagnostic Tool (CDT)](#安装及更新-transwarp-case-diagnostic-tool-cdt)
+    - [获取安装包](#获取安装包)
+    - [Windows 安装](#windows-安装)
+    - [MacOS 安装](#macos-安装)
+    - [软件更新](#软件更新)
+  - [快速开始](#快速开始)
+    - [添加集群节点案例](#添加集群节点案例)
+    - [更新服务信息案例](#更新服务信息案例)
+    - [获取特定角色日志案例](#获取特定角色日志案例)
+    - [执行预定义 CheckList 诊断案例](#执行预定义-checklist-诊断案例)
+  - [配置](#配置)
+    - [节点配置](#节点配置)
+      - [节点配置页面](#节点配置页面)
+      - [添加单个节点](#添加单个节点)
+      - [批量添加节点](#批量添加节点)
+      - [测试节点连通性](#测试节点连通性)
+      - [编辑节点信息](#编辑节点信息)
+      - [删除节点信息](#删除节点信息)
+    - [服务配置](#服务配置)
+      - [直接更新服务信息](#直接更新服务信息)
+      - [节点配置后更新服务信息](#节点配置后更新服务信息)
+    - [映射配置](#映射配置)
+      - [映射配置页面](#映射配置页面)
+      - [添加映射信息](#添加映射信息)
+      - [删除映射信息](#删除映射信息)
+    - [配置初始化](#配置初始化)
+    - [语言设置](#语言设置)
+  - [使用方法](#使用方法)
+    - [查询服务及角色](#查询服务及角色)
+    - [获取服务角色日志](#获取服务角色日志)
+    - [快捷功能](#快捷功能)
+      - [快捷功能：查看版本](#快捷功能查看版本)
+      - [快捷功能：配置信息](#快捷功能配置信息)
+      - [快捷功能：Manager 工具箱](#快捷功能manager-工具箱)
+      - [快捷功能：8180 页面打不开](#快捷功能8180-页面打不开)
+      - [快捷功能：TOS 异常](#快捷功能tos-异常)
+      - [快捷功能：TxSQL 异常](#快捷功能txsql-异常)
+      - [快捷功能：HDFS 异常](#快捷功能hdfs-异常)
+      - [快捷功能：YARN 异常](#快捷功能yarn-异常)
+      - [快捷功能：Inceptor 异常](#快捷功能inceptor-异常)
+      - [快捷功能：Hyperbase 异常](#快捷功能hyperbase-异常)
+      - [快捷功能：Search 异常](#快捷功能search-异常)
+      - [快捷功能：Guardian 异常](#快捷功能guardian-异常)
+      - [快捷功能：Aquila 异常](#快捷功能aquila-异常)
+      - [快捷功能：Transporter 异常](#快捷功能transporter-异常)
+      - [快捷功能：Workflow 异常](#快捷功能workflow-异常)
+      - [快捷功能：SQL 异常](#快捷功能sql-异常)
+      - [快捷功能：JVM 信息](#快捷功能jvm-信息)
+      - [快捷功能：Search 集群健康值异常](#快捷功能search-集群健康值异常)
+
+<!-- /TOC -->
 
 ## 什么是 Transwarp Case Diagnostic Tool (CDT)
 
@@ -20,6 +96,25 @@ Transwarp Case Diagnostic Tool (CDT) 是一款适配 Transwarp Data Hub （即 T
 无论是自行排查日志，还是将日志和诊断信息打包发送给售后支持人员，Transwarp Case Diagnostic Tool (CDT) 都能够大大提高 Troubleshooting 效率。
 
 ### 版本更新记录
+
+#### 1.1.0 to 1.2.0
+
+【新功能追加】
+1. 增加工具调试功能，可以方便地查看工具执行日志；
+2. 新增 Checklist 诊断：Hyperbase 异常；
+3. 新增 Checklist 诊断：Search 异常；
+4. 新增 Checklist 诊断：Guardian 异常；
+5. 新增 Checklist 诊断：Search 集群健康值异常；
+6. 新增 Checklist 诊断：Aquila 异常；
+7. 新增 Checklist 诊断：Transporter 异常；
+8. 新增 Checklist 诊断：Workflow 异常；
+9. TxSQL 异常 Checklist 诊断增加对 Guardian TxSQL 的支持；
+
+【修复与改善】
+1. 修复了在 MacOS 操作系统下，无法查看离线帮助文档的问题；
+2. 修复了在 MacOS 操作系统下，无法正确更新软件版本的问题；
+3. 启动画面优化；
+4. 其他软件稳定性和易用性优化。
 
 #### 1.0.1 to 1.1.0
 
@@ -767,7 +862,7 @@ TOS 异常会收集 TOS Master Pod 状态、服务器基本信息、TOS Slave Jo
 
 #### 快捷功能：TxSQL 异常
 
-TxSQL 异常是 TxSQL 服务特有的快捷功能，它用于收集 TxSQL 服务状态异常或无法启动场景下的诊断信息。
+TxSQL 异常是 TxSQL、Guaridan 等服务具有的快捷功能，它用于收集 TxSQL 服务或 Guardian 等服务的 TxSQL 角色状态异常或无法启动场景下的诊断信息。
 
 ![image.png](https://s2.loli.net/2022/02/15/xsnHeiqQXPDoRMJ.png)
 
@@ -777,7 +872,7 @@ TxSQL 异常是 TxSQL 服务特有的快捷功能，它用于收集 TxSQL 服务
 
 点击【OK】，即可打开下载目录。
 
-TxSQL 异常会收集 Manager 日志、TxSQL 服务日志、TxSQL Pod 状态、TxSQL 主节点信息。
+TxSQL 异常会收集 Manager 日志、TxSQL 服务或 Guardian 等服务的 TxSQL 角色日志、TxSQL Pod 状态、TxSQL 主节点信息。
 
 #### 快捷功能：HDFS 异常
 
@@ -820,6 +915,90 @@ Inceptor 异常是 Inceptor、ArgoDB 等服务具有的快捷功能，它用于�
 点击【OK】，即可打开下载目录。
 
 Inceptor 异常会收集 Manager 日志、Inceptor 或 ArgoDB 服务日志、Inceptor 或 ArgoDB Pod 状态、本机到 Inceptor 或 ArgoDB 10000端口的连通情况。
+
+#### 快捷功能：Hyperbase 异常
+
+Hyperbase 异常是 Hyperbase 服务特有的快捷功能，它用于收集 Hyperbase 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/5pY2IHGmcd6SAgh.png)
+
+点击【Hyperbase 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Hyperbase 异常会收集 Manager 日志、Hyperbase 服务日志、Hyperbase Pod 状态。
+
+#### 快捷功能：Search 异常
+
+Search 异常是 Search 服务特有的快捷功能，它用于收集 Search 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/KSkYsxun7J3liPj.png)
+
+点击【Search 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Search 异常会收集 Manager 日志、Search 服务日志、Search Pod 状态。
+
+#### 快捷功能：Guardian 异常
+
+Guardian 异常是 Guardian 服务特有的快捷功能，它用于收集 Guardian 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/EkfKuv6bN3nrR8h.png)
+
+点击【Guardian 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Guardian 异常会收集 Manager 日志、Guardian 服务日志、Guardian Pod 状态。
+
+#### 快捷功能：Aquila 异常
+
+Aquila 异常是 Aquila 服务特有的快捷功能，它用于收集 Aquila 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/gqbh4WBQoOUjLrk.png)
+
+点击【Aquila 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Aquila 异常会收集 Manager 日志、Aquila Pod 状态。
+
+#### 快捷功能：Transporter 异常
+
+Transporter 异常是 Transporter 服务特有的快捷功能，它用于收集 Transporter 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/KeDqrnOVISbPHNU.png)
+
+点击【Transporter 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Transporter 异常会收集 Manager 日志、Transporter 服务日志、Transporter Pod 状态。
+
+#### 快捷功能：Workflow 异常
+
+Workflow 异常是 Workflow 服务特有的快捷功能，它用于收集 Workflow 服务状态异常或无法启动场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/pFMWTAsY95NrtvJ.png)
+
+点击【Workflow 异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Workflow 异常会收集 Manager 日志、Workflow 服务日志、Workflow Pod 状态。
 
 #### 快捷功能：SQL 异常
 
@@ -866,3 +1045,17 @@ JVM 信息获取页面包含了以下选项。
 点击【OK】，即可打开下载目录。
 
 JVM 信息会收集指定的 JVM 信息（jstack、jmap 或 jstat）。
+
+#### 快捷功能：Search 集群健康值异常
+
+Search 集群健康值异常是 Search 服务特有的快捷功能，它用于收集 Search Cluster Health 为 Yellow 或 Red 场景下的诊断信息。
+
+![image.png](https://s2.loli.net/2022/03/04/VNnGywZz3g5qThK.png)
+
+点击【Search 集群健康值异常】按钮，会弹出目录选择页面，选择指定的下载目录后，稍等片刻即可执行成功，此时会弹 Success 提示对话框。
+
+![image.png](https://s2.loli.net/2022/01/26/dP1iBqK3Avtr458.png)
+
+点击【OK】，即可打开下载目录。
+
+Search 集群健康值异常会收集集群健康值（Cluster Health）、节点进程（Nodes Process）、分片信息（Shards）、未分配分片（Unassigned shards）。
